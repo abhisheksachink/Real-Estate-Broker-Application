@@ -1,48 +1,72 @@
 package com.capston.realestate.model;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 
 
 
-@NoArgsConstructor //it is coming from lombok
-//@AllArgsConstructor
-@Getter
-@Setter
+/***************************************************************************
+ * 
+ * @author 			Abhishek Kumar
+ * Description 		It is an entity class that provides all the fields of User
+ * Version			1.0
+ * Created Date		20-Jan-2023
+ ***************************************************************************/
+
 @Entity
-@Table(name="user999")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long userId;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int userId;
+	private String password;
+	private String role;
 	
-	@Column(name="first_name",nullable=false)
-	private String firstName;
 	
-	@Column(name="last_name",nullable=false)
-	private String lastName;
 	
-	private int age;
-	private char gender;
 	
-
-	public User(String firstName, String lastName, int age, char gender) {
+	public User() {
 		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.age = age;
-		this.gender = gender;
+		// TODO Auto-generated constructor stub
 	}
+	
+	
+	
+	public User(int userId, String password, String role) {
+		super();
+		this.userId = userId;
+		this.password = password;
+		this.role = role;
+	}
+
+
+
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+
+
 	
 	
 }
