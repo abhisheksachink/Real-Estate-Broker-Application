@@ -7,6 +7,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
 
@@ -18,52 +24,23 @@ import jakarta.persistence.InheritanceType;
  * Created Date		20-Jan-2023
  ***************************************************************************/
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Getter
+@Setter
 @Entity
+@Table(name="user555")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name="user_id")
 	private int userId;
 	private String password;
 	private String role;
 	
 	
-	
-	
-	public User() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-	
-	
-	public User(int userId, String password, String role) {
-		super();
-		this.userId = userId;
-		this.password = password;
-		this.role = role;
-	}
-
-
-
-	public int getUserId() {
-		return userId;
-	}
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getRole() {
-		return role;
-	}
-	public void setRole(String role) {
-		this.role = role;
-	}
 
 
 
